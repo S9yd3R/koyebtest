@@ -1,2 +1,2 @@
-__all__ = ["spotify","youtube","getsong"]
+__all__ = ["spotify","youtube","getsong","start"]
 

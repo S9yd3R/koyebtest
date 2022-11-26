@@ -31,9 +31,10 @@ async def main(bot:Client,msg:Message) :
     youtube_regex_match = re.match(youtube_regex, msg.text)
 
 
+    if str(msg.text) == "/start" :
+        await start.start(bot,msg)
 
-
-    if spotify_match :
+    elif spotify_match :
         await spotify.spotify(bot,msg)
 
     elif youtube_regex_match:
@@ -45,3 +46,9 @@ async def main(bot:Client,msg:Message) :
         pass
 print("started")
 rhythm.run()
+
+
+@app.on_callback_query()
+async def callback_query(bot:Client,cb:CallbackQuery)
+    if cb.data == "close" :
+        await bot.delete_messages(chat_id=cb.message.chat.id,message_ids=cb.message.id)
