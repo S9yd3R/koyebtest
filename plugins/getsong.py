@@ -3,7 +3,6 @@ import asyncio
 from lib import config
 from time import sleep
 from yt_dlp import YoutubeDL
-from youtube_search import YoutubeSearch
 import spotipy
 from pyrogram import Client
 from spotipy.oauth2 import SpotifyClientCredentials
