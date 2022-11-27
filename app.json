@@ -1,0 +1,47 @@
+{
+    "name": "Music Bot",
+    "description": "A telegram music bot",
+    "stack": "container",
+    "keywords": [
+        "Telegram",
+        "Music",
+        "Bot"
+    ],
+    "repository": "https://github.com/RhythmBotTg/RhythmStage2",
+    "env": {
+        "API_ID": {
+            "description": "API ID",
+            "value": ""
+        },
+        "API_HASH": {
+            "description": "API Hash",
+            "value": ""
+        },
+        "BOT_TOKEN": {
+            "description": "Your Bot Token From @BotFather",
+            "value": ""
+        },
+        "SESSION": {
+            "description": "Bot username without @",
+            "value":
+        "CLIENT_ID": {
+            "description": "Spotify client id",
+            "value": ""
+        },
+        "SECRET": {
+            "description": "Spotify Secret",
+            "value": ""
+        }
+    },
+    "buildpacks": [
+        {
+            "url": "heroku/python"
+        }
+    ],
+    "formation": {
+        "worker": {
+            "quantity": 1,
+            "size": "free"
+        }
+    }
+}
