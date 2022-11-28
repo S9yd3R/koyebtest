@@ -20,7 +20,7 @@ async def main(bot:Client,msg:Message) :
         r'(https?://)?(www\.)?'
         '(youtube|youtu|youtube-nocookie)\.(com|be)/'
         '(watch\?v=|embed/|v/|.+\?v=)?([^&=%\?]{11})')
-    spotify_regex = (9
+    spotify_regex = (
             r'(https?://)?(open\.)?'
             '(spotify)\.(com)/'
             '(track|album|playlist)'
