@@ -34,7 +34,7 @@ async def yt_mp3(bot:Client,msg:Message) :
                 os.remove(filename)
         except :
             failed += 1
-            await bot.edit_message_text(chat_id,message_id=message.id,text=f"ᴘʟᴇᴀsᴇ ʙᴇ ᴘᴀᴛɪᴇɴᴛ ᴛʜɪs ᴡɪʟʟ ᴛᴀᴋᴇ ᴀ ᴡʜɪʟᴇ \n\ncoмpleтed : {completed}/{len(tracks)}\nғᴀɪʟᴇᴅ : {failed} ")
+            await bot.edit_message_text(chat_id,message_id=message.id,text=f"ᴘʟᴇᴀsᴇ ʙᴇ ᴘᴀᴛɪᴇɴᴛ ᴛʜɪs ᴡɪʟʟ ᴛᴀᴋᴇ ᴀ ᴡʜɪʟᴇ \n\ncoмpleтed : {completed}/{length}\nғᴀɪʟᴇᴅ : {failed} ")
         y = time.time()
         z = y - x
         z = str(z).split(".")[0]
