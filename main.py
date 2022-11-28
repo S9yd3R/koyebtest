@@ -4,6 +4,8 @@ from plugins import *
 from lib import config
 from pyrogram.client import Client
 from pyrogram.types.messages_and_media import Message
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup,CallbackQuery
+
 
 rhythm = Client(config.SESSION,api_id=int(config.API_ID),api_hash=config.API_HASH ,bot_token=config.TOKEN)
 
