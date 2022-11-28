@@ -20,7 +20,7 @@ async def main(bot:Client,msg:Message) :
         r'(https?://)?(www\.)?'
         '(youtube|youtu|youtube-nocookie)\.(com|be)/'
         '(watch\?v=|embed/|v/|.+\?v=)?([^&=%\?]{11})')
-    spotify_regex = (
+    spotify_regex = (9
             r'(https?://)?(open\.)?'
             '(spotify)\.(com)/'
             '(track|album|playlist)'
@@ -49,7 +49,7 @@ async def main(bot:Client,msg:Message) :
 print("started")
 
 
-@app.on_callback_query()
+@rhythm.on_callback_query()
 async def callback_query(bot:Client,cb:CallbackQuery):
     if cb.data == "close" :
         await bot.delete_messages(chat_id=cb.message.chat.id,message_ids=cb.message.id)
