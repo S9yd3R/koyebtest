@@ -42,7 +42,7 @@ print("started")
 
 
 @rhythm.on_callback_query()
-async def callback_query(bot:Client,cb:CallbackQuery)
+async def callback_query(bot:Client,cb:CallbackQuery):
     if cb.data == "close" :
         await bot.delete_messages(chat_id=cb.message.chat.id,message_ids=cb.message.id)
 
