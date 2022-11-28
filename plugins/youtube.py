@@ -32,6 +32,7 @@ async def yt_mp3(bot:Client,msg:Message) :
                 await msg.reply_document(filename,quote=False)
                 completed += 1
                 os.remove(filename)
+                await bot.edit_message_text(chat_id=chat_id,message_id=message.id,text=f"ᴘʟᴇᴀsᴇ ʙᴇ ᴘᴀᴛɪᴇɴᴛ ᴛʜɪs ᴡɪʟʟ ᴛᴀᴋᴇ ᴀ ᴡʜɪʟᴇ \n\ncoмpleтed : {completed}/{len(tracks)}\nғᴀɪʟᴇᴅ : {failed}")
         except :
             failed += 1
             await bot.edit_message_text(chat_id,message_id=message.id,text=f"ᴘʟᴇᴀsᴇ ʙᴇ ᴘᴀᴛɪᴇɴᴛ ᴛʜɪs ᴡɪʟʟ ᴛᴀᴋᴇ ᴀ ᴡʜɪʟᴇ \n\ncoмpleтed : {completed}/{length}\nғᴀɪʟᴇᴅ : {failed} ")
@@ -40,7 +41,7 @@ async def yt_mp3(bot:Client,msg:Message) :
         z = str(z).split(".")[0]
         z = int(z)
         await bot.delete_messages(chat_id,message_ids=message.id)
-        await msg.reply_text(f"ᴛᴏᴛᴀʟ sᴏɴɢs : {len(tracks)}\nsᴜᴄᴄᴇᴇᴅᴇᴅ : {completed}\nғᴀɪʟᴇᴅ : {failed}\n\nᴛɪᴍᴇ ᴛᴏᴏᴋ : {z//60}.{z%60} ᴍɪɴᴜᴛᴇs")
+        await msg.reply_text(f"ᴛᴏᴛᴀʟ sᴏɴɢs : {length}\nsᴜᴄᴄᴇᴇᴅᴇᴅ : {completed}\nғᴀɪʟᴇᴅ : {failed}\n\nᴛɪᴍᴇ ᴛᴏᴏᴋ : {z//60}.{z%60} ᴍɪɴᴜᴛᴇs")
 
 
 
