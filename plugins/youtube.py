@@ -7,6 +7,7 @@ from pyrogram.types.messages_and_media import Message
 
 
 async def yt_mp3(bot:Client,msg:Message) :
+    chat_id = msg.chat.id
     if str(msg.text).split("/")[3].split("?")[0] == "playlist" :
         completed = 0
         failed = 0
