@@ -31,7 +31,7 @@ async def yt_mp3(bot:Client,msg:Message) :
                         }
 
                 with YoutubeDL(options) as ydl:
-                    ydl.download(link)
+                    ydl.download(video)
                 await msg.reply_document(filename,quote=False)
                 completed += 1
                 os.remove(filename)
