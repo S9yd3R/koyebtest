@@ -47,10 +47,13 @@ async def main(bot:Client,msg:Message) :
     if chat_type.split(".")[1] == "PRIVATE" :
         pass
 print("started")
-rhythm.run()
 
 
 @app.on_callback_query()
 async def callback_query(bot:Client,cb:CallbackQuery):
     if cb.data == "close" :
         await bot.delete_messages(chat_id=cb.message.chat.id,message_ids=cb.message.id)
+
+
+
+rhythm.run()
