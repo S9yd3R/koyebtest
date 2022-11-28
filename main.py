@@ -33,7 +33,7 @@ async def main(bot:Client,msg:Message) :
     elif spotify_match :
         await spotify.spotify(bot,msg)
 
-    elif str(msg.text).split("/")[2].split(".") == "youtube" or str(msg.text).split("/")[2].split(".") == "youtu" :
+    elif str(msg.text).split("/")[2].split(".")[0] == "youtube" or str(msg.text).split("/")[2].split(".") == "youtu" :
         await youtube.yt_mp3(bot,msg)
     else :
         await getsong.searchNget(bot,msg)
