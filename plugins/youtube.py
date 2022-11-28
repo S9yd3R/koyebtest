@@ -21,8 +21,8 @@ async def yt_mp3(bot:Client,msg:Message) :
         message = await msg.reply_text(f"ᴘʟᴇᴀsᴇ ʙᴇ ᴘᴀᴛɪᴇɴᴛ ᴛʜɪs ᴡɪʟʟ ᴛᴀᴋᴇ ᴀ ᴡʜɪʟᴇ .\ncompleted : {completed}/{length}")
         try :
             for link in links:
-                link = Video.get(link)["link"]
-                video_info = YoutubeDL().extract_info(url=link,download=False)
+                video = Video.get(link)["link"]
+                video_info = YoutubeDL().extract_info(url=video,download=False)
                 filename = f"{video_info['title']}.mp3"
                 options={
                         'format':'bestaudio/best',
