@@ -12,7 +12,7 @@ async def yt_mp3(bot:Client,msg:Message) :
     if str(msg.text).split("/")[3].split("?")[0] == "playlist" :
         completed = 0
         failed = 0
-        playlist = Playlist.get(str(msg.txt))
+        playlist = Playlist.get(str(msg.text))
         length = len(playlist["videos"])
         links = []
         for i in range(length) :
