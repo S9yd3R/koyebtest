@@ -2,6 +2,7 @@ import os
 import time
 from pyrogram import Client
 from yt_dlp import YoutubeDL
+from youtubesearchpython import Video
 from youtubesearchpython import Playlist
 from pyrogram.types.messages_and_media import Message
 
@@ -11,14 +12,16 @@ async def yt_mp3(bot:Client,msg:Message) :
     if str(msg.text).split("/")[3].split("?")[0] == "playlist" :
         completed = 0
         failed = 0
-
-        playlist = Playlist.get(str(msg.text))
+        playlist = Playlist.get(str(msg.txt))
         length = len(playlist["videos"])
+        links = []
+        for i in range(length) :
+            links.append(playlist["videos"][i]["link"])
         x = time.time()
         message = await msg.reply_text(f"ᴘʟᴇᴀsᴇ ʙᴇ ᴘᴀᴛɪᴇɴᴛ ᴛʜɪs ᴡɪʟʟ ᴛᴀᴋᴇ ᴀ ᴡʜɪʟᴇ .\ncompleted : {completed}/{length}")
         try :
-            for i in range(length):
-                link = playlist["videos"][i]["link"]
+            for link in links:
+                link = Video.get(link)["link"]
                 video_info = YoutubeDL().extract_info(url=link,download=False)
                 filename = f"{video_info['title']}.mp3"
                 options={
@@ -46,7 +49,6 @@ async def yt_mp3(bot:Client,msg:Message) :
 
 
     video_info = YoutubeDL().extract_info(url=msg.text,download=False)
-    ''
     filename = f"{video_info['title']}.mp3"
     filename = filename.replace("/","")
     options={
@@ -54,8 +56,11 @@ async def yt_mp3(bot:Client,msg:Message) :
             'keepvideo':False,
             'outtmpl':filename,
             }
+    message = await msg.reply_text("ᴅᴏᴡɴʟᴏᴀᴅɪɴɢ ...")
 
     with YoutubeDL(options) as ydl:
         ydl.download([video_info['webpage_url']])
+    await bot.edit_message_text(chat_id,message_id=message.id,text="sᴇɴᴅɪɴɢ ...")
     await msg.reply_document(filename,quote=False)
     os.remove(filename)
+    await bot.delete_messages(chat_id,message_ids=message.id)
