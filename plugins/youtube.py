@@ -20,7 +20,7 @@ async def yt_mp3(bot:Client,msg:Message) :
             for i in range(length):
                 link = playlist["videos"][i]["link"]
                 video_info = YoutubeDL().extract_info(url=link,download=False)
-                filename = f"{str(video_info['title']).replace('/','')}.mp3"
+                filename = f"{video_info['title']}.mp3"
                 options={
                         'format':'bestaudio/best',
                         'keepvideo':False,
