@@ -22,10 +22,15 @@ async def main(bot:Client,msg:Message) :
             '(track|album|playlist)'
             )
 
-
+    youtube_regex = (
+        r'(https?://)?(www\.)?'
+        '(youtube|youtu|youtube-nocookie)\.(com|be)/'
+        '(watch\?v=|embed/|v/|.+\?v=)?([^&=%\?]{11})')
 
 #Regex
     spotify_match = re.match(spotify_regex, msg.text)
+    youtube_regex_match = re.match(youtube_regex, msg.text)
+
 
     if str(msg.text) == "/start" :
         await start.start(bot,msg)
@@ -33,7 +38,7 @@ async def main(bot:Client,msg:Message) :
     elif spotify_match :
         await spotify.spotify(bot,msg)
 
-    elif str(msg.text).split("/")[2].split(".")[0] == "youtube" or str(msg.text).split("/")[2].split(".")[0] == "youtu" :
+    elif youtube_regex_match :
         await youtube.yt_mp3(bot,msg)
     else :
         await getsong.searchNget(bot,msg)
