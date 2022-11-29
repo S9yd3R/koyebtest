@@ -42,7 +42,7 @@ async def spotify(bot:Client,msg:Message) :
 
         with YoutubeDL(options) as ydl:
             ydl.download([video_info['webpage_url']])
-        await bot.edit_message_text(chat_id,message_id=message.id,text="sending")
+        #await bot.edit_message_text(chat_id,message_id=message.id,text="sending")
         await msg.reply_document(filename,quote=False)
         os.remove(filename)
         await bot.delete_messages(chat_id=msg.chat.id,message_ids=message.id)
