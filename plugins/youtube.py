@@ -13,15 +13,15 @@ async def yt_mp3(bot:Client,msg:Message) :
         start = time.time()
         completed = 0
         failed = 0
-
+        playlist = Playlist.get(str(msg.text))
+        length = len(playlist["videos"])
+        message = await msg.reply_text(f"ᴘʟᴇᴀsᴇ ʙᴇ ᴘᴀᴛɪᴇɴᴛ ᴛʜɪs ᴡɪʟʟ ᴛᴀᴋᴇ ᴀ ᴡʜɪʟᴇ .\ncompleted : {completed}/{length}")
+       
 
         
 
 
         try :
-            playlist = Playlist.get(str(msg.text))
-            length = len(playlist["videos"])
-            message = await msg.reply_text(f"ᴘʟᴇᴀsᴇ ʙᴇ ᴘᴀᴛɪᴇɴᴛ ᴛʜɪs ᴡɪʟʟ ᴛᴀᴋᴇ ᴀ ᴡʜɪʟᴇ .\ncompleted : {completed}/{length}")
             links = []
             for i in range(length):
                 links.append(playlist["videos"][i]["link"])
@@ -47,9 +47,9 @@ async def yt_mp3(bot:Client,msg:Message) :
             failed += 1
             await bot.edit_message_text(chat_id=chat_id,message_id=message.id,text=f"ᴘʟᴇᴀsᴇ ʙᴇ ᴘᴀᴛɪᴇɴᴛ ᴛʜɪs ᴡɪʟʟ ᴛᴀᴋᴇ ᴀ ᴡʜɪʟᴇ \n\ncoмpleтed : {completed}/{length}\nғᴀɪʟᴇᴅ : {failed}")
         stop = time.time()
-        delta = y - x
-        delta = str(z).split(".")[0]
-        delta = int(z)
+        delta = stop - start
+        delta = str(delta).split(".")[0]
+        delta = int(delta)
         await bot.delete_messages(chat_id,message_ids=message.id)
         await msg.reply_text(f"ᴛᴏᴛᴀʟ sᴏɴɢs : {length}\nsᴜᴄᴄᴇᴇᴅᴇᴅ : {completed}\nғᴀɪʟᴇᴅ : {failed}\n\nᴛɪᴍᴇ ᴛᴏᴏᴋ : {delta//60}.{delta%60} ᴍɪɴᴜᴛᴇs")
 
