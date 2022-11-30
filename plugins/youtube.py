@@ -15,12 +15,13 @@ async def yt_mp3(bot:Client,msg:Message) :
         failed = 0
 
 
-        message = await msg.reply_text(f"ᴘʟᴇᴀsᴇ ʙᴇ ᴘᴀᴛɪᴇɴᴛ ᴛʜɪs ᴡɪʟʟ ᴛᴀᴋᴇ ᴀ ᴡʜɪʟᴇ .\ncompleted : {completed}/{length}")
+        
 
 
         try :
             playlist = Playlist.get(str(msg.text))
             length = len(playlist["videos"])
+            message = await msg.reply_text(f"ᴘʟᴇᴀsᴇ ʙᴇ ᴘᴀᴛɪᴇɴᴛ ᴛʜɪs ᴡɪʟʟ ᴛᴀᴋᴇ ᴀ ᴡʜɪʟᴇ .\ncompleted : {completed}/{length}")
             links = []
             for i in range(length):
                 links.append(playlist["videos"][i]["link"])
