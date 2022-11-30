@@ -25,7 +25,7 @@ async def main(bot:Client,msg:Message) :
     youtube_regex = (
         r'(https?://)?(www\.)?'
         '(youtube|youtu|youtube-nocookie)\.(com|be)/'
-        '(playlist|watch\?v=|embed/|v/|.+\?v=)?([^&=%\?]{11})')
+        '(playlist\?list=|watch\?v=|embed/|v/|.+\?v=)?([^&=%\?]{11})')
 
 #Regex
     spotify_match = re.match(spotify_regex, msg.text)
