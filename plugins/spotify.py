@@ -30,7 +30,7 @@ async def spotify(bot:Client,msg:Message) :
             link = VideosSearch(f"{song_name} {artist} {album}",limit=1).result()["result"][0]["link"]
         else :
             link = VideosSearch(f"{song_name} {artist}",limit=1).result()["result"][0]["link"]
-        message = await msg.reply_text(f"ᴅᴏᴡɴʟᴏᴀᴅɪɴɢ ```{song_name}```")
+        message = await msg.reply_text(f"ᴅᴏᴡɴʟᴏᴀᴅɪɴɢ ``{song_name}``")
         video_info = YoutubeDL().extract_info(url=link,download=False)
         filename = f"{video_info['title']}.mp3"
         filename = str(filename).replace("/","")
