@@ -4,4 +4,7 @@ yt-dlp==2022.11.11
 youtube-search-python==1.6.6
 TgCrypto==1.2.5
 youtube_search
-aiohttp
+Flask==2.2.2
+gunicorn==20.1.0
+aiohttp==3.8.1
+pymongo[srv]==3.12.3
